@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<scene>
+	<integrator type="path_mis"/>
+
+	<camera type="perspective">
+		<float name="fov" value="100"/>
+		<transform name="toWorld">
+			<scale value="-1,1,1"/>
+			<lookat target="10, 50, 7" origin="5, -10, 5.41159" up="0, 0, 1"/>
+		</transform>
+
+		<integer name="height" value="600"/>
+		<integer name="width" value="800"/>
+	</camera>
+
+	<sampler type="independent">
+		<integer name="sampleCount" value="256"/>
+	</sampler>
+    
+    <emitter type="envmap">
+        <string name="mapname" value="../scenes/project/envmaps/envmap.exr"/>
+    </emitter>
+
+    <!--
+	<mesh type="obj">
+		<string name="filename" value="meshes/walls.obj"/>
+
+		<bsdf type="diffuse">
+			<color name="albedo" value="0.725 0.71 0.68"/>
+		</bsdf>
+	</mesh>
+
+	<mesh type="obj">
+		<string name="filename" value="meshes/rightwall.obj"/>
+
+		<bsdf type="diffuse">
+			<color name="albedo" value="0.161 0.133 0.427"/>
+		</bsdf>
+	</mesh>
+
+	<mesh type="obj">
+		<string name="filename" value="meshes/leftwall.obj"/>
+
+		<bsdf type="diffuse">
+			<color name="albedo" value="0.630 0.065 0.05"/>
+		</bsdf>
+	</mesh>
+     -->
+    <!--
+	<mesh type="obj">
+        <string name="filename" value="meshes/suzanne.obj"/>
+        <transform name="toWorld">
+            <scale value="0.7 0.7 0.7"/>
+            <translate value="0, 0.893051, 0.41198"/>
+        </transform>
+		<bsdf type="conductor"/>
+	</mesh>
+    -->
+    
+    <mesh type="sphere">
+        <point name="center" value="-20, 50, 7" />
+        <float name="radius" value="20" />
+        
+        <bsdf type="conductor"/>
+    </mesh>
+    
+    <mesh type="sphere">
+        <point name="center" value="40, 50, 7" />
+        <float name="radius" value="20" />
+        
+        <bsdf type="roughconductor">
+        </bsdf>
+        
+    </mesh>
+    
+    <!--
+	<mesh type="obj">
+		<string name="filename" value="meshes/light.obj"/>
+
+		<emitter type="area">
+			<color name="radiance" value="10 10 10"/>
+		</emitter>
+	</mesh>
+    -->
+</scene>

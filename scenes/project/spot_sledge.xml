@@ -1,0 +1,58 @@
+<scene>
+	<!-- Independent sample generator, user-selected samples per pixel -->
+	<sampler type="independent">
+		<integer name="sampleCount" value="4"/>
+	</sampler>
+
+	<!-- Use the direct illumination integrator -->
+	<integrator type="direct_mis"/>
+    
+	<!-- Render the scene as viewed by a perspective camera -->
+	<camera type="perspective">
+		<transform name="toWorld">
+			<lookat target="-11, 1, 0"
+			        origin="0, 1, 0"
+			        up="0, 1, 0"/>
+		</transform>
+
+		<!-- Field of view: 40 degrees -->
+		<float name="fov" value="40"/>
+
+		<!-- 800x600 pixels -->
+		<integer name="width" value="800"/>
+		<integer name="height" value="600"/>
+	</camera>
+
+	<!-- Illuminate using a spot light -->
+	<emitter type="spot">
+		<point name="position" value = "-1,1,0"/>
+        <point name="target" value = "-2,1,0"/>
+        <float name="cone" value = "20"/>
+        <float name="falloff" value = "20"/>
+		<color name="power" value="50,60,70"/>
+	</emitter>
+
+    <!-- Sponza -->
+	<mesh type="obj">
+		<string name="filename" value="meshes/sponza.obj"/>
+
+		<bsdf type="diffuse">
+			<color name="albedo" value=".8,.8,.8"/>
+		</bsdf>
+	</mesh>
+    
+    <!-- Add a sledge with transformation -->
+    <mesh type="obj">
+        <string name="filename" value="meshes/slaight/slaight3.obj"/>
+        
+        <bsdf type="diffuse">
+            <color name="albedo" value="1.0,.8,.6"/>
+        </bsdf>
+        <transform name="toWorld">
+            <translate value="-6,1,-3"/>
+            <rotate axis="0,1,0" angle="30"/>
+            <scale value="1,1,1"/>
+        </transform>
+    </mesh>
+    
+</scene>

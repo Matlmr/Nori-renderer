@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<scene>
+	<integrator type="vol_pt"/>
+
+	<camera type="depthoffield">
+		<float name="fov" value="27.7856"/>
+		<transform name="toWorld">
+			<scale value="-1,1,1"/>
+			<lookat target="-0.25, 0.8, -0.5" origin="0.25, 0.8, 0.5" up="0, 1, 0"/>
+		</transform>
+        <float name="lensradius" value="0.019"/>
+        <float name="focaldistance" value="0.53"/>
+		<integer name="height" value="768"/>
+		<integer name="width" value="1024"/>
+	</camera>
+
+	<sampler type="independent">
+		<integer name="sampleCount" value="768"/>
+	</sampler>
+    
+    <medium type="medium">
+        <color name="absorption" value="0.1 0.1 0.1"/>
+        <color name="scattering" value="0.1 0.1 0.1"/>
+    </medium>
+<!--
+	<mesh type="obj">
+		<string name="filename" value="meshes/rightwall.obj"/>
+
+		<bsdf type="diffuse">
+			<color name="albedo" value="0.725 0.71 0.68"/>
+		</bsdf>
+	</mesh>-->
+    
+    <mesh type="obj">
+        <string name="filename" value="meshes/slaight/slaight3.obj"/>
+        <transform name="toWorld">
+            <translate value="-0.5 8.1 0"/>
+            <rotate axis="0 1 0" angle="90"/>
+            <rotate axis="1 0 0" angle="-10"/>
+            <scale value="0.1 0.1 0.1"/>
+        </transform>
+        <bsdf type="layered">
+            <color name="absorption" value="0 1 1"/>
+            <float name="thickness" value="1"/>
+            <bsdf name="bsdf" type="roughconductor">
+                <string name="material" value="Cr"/>
+                <float name="alpha" value="0.1"/>
+            </bsdf>
+        </bsdf>
+    </mesh>
+    
+    <mesh type="obj">
+        <string name="filename" value="meshes/present.obj"/>
+        <transform name="toWorld">
+            <translate value="-2 39 2"/>
+            <scale value="0.02 0.02 0.02"/>
+        </transform>
+        <bsdf type="diffuse">
+            <color name="albedo" value="0 0.702 0.173"/>
+        </bsdf>
+    </mesh>
+    
+    <emitter type="spot">
+        <point name="position" value = "-0.22,0.8,-0.3"/>
+        <point name="target" value = "-0.25,0.8,-0.5"/>
+        <float name="cone" value = "5"/>
+        <float name="falloff" value = "5"/>
+        <color name="power" value="500,500,500"/>
+    </emitter>
+    
+    <emitter type="point">
+        <point name="position" value = "0, 0.8, 0"/>
+        <color name="power" value=".1,.1,.1"/>
+    </emitter>
+    
+
+	<mesh type="obj">
+		<string name="filename" value="meshes/light.obj"/>
+
+		<emitter type="area">
+			<color name="radiance" value="12.5 12.5 12.5"/>
+		</emitter>
+	</mesh>
+</scene>

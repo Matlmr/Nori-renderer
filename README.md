@@ -1,3 +1,5 @@
+![](final2.png)
+
 ## Nori Version 2
 
 Nori is a simple ray tracer written in C++. It runs on Windows, Linux, and
